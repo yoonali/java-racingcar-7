@@ -8,6 +8,7 @@ import java.util.List;
 
 public class Racingcar {
     public static final String INPUT_TEXT = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
+    public static final String INPUT_NUMBER = "시도할 횟수는 몇 회인가요?";
     private final String carName;
     private int position = 0;
 
@@ -18,6 +19,9 @@ public class Racingcar {
     public static void init() {
         System.out.println(INPUT_TEXT);
         List<Racingcar> cars = createCars();
+        System.out.println(INPUT_NUMBER);
+        int numberOfTries = Integer.parseInt(readLine());
+        startRacing(cars, numberOfTries);
     }
 
     public static List<Racingcar> createCars() {
@@ -33,6 +37,13 @@ public class Racingcar {
             }
         }
         return cars;
+    }
+
+    public static void startRacing(List<Racingcar> cars, int tries) {
+        for (int i = 0; i < tries; i++) {
+            raceOneRound(cars);
+            System.out.println();
+        }
     }
 
     public static void raceOneRound(List<Racingcar> cars) {
