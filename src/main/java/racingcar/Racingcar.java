@@ -44,6 +44,7 @@ public class Racingcar {
             raceOneRound(cars);
             System.out.println();
         }
+        displayWinners(cars);
     }
 
     public static void raceOneRound(List<Racingcar> cars) {
@@ -70,5 +71,16 @@ public class Racingcar {
 
     public int getPosition() {
         return position;
+    }
+
+    public static void displayWinners(List<Racingcar> cars) {
+        int maxPosition = cars.stream().mapToInt(Racingcar::getPosition).max().orElse(0);
+        List<String> winners = new ArrayList<>();
+        for (Racingcar car : cars) {
+            if (car.getPosition() == maxPosition) {
+                winners.add(car.carName);
+            }
+        }
+        System.out.println("최종 우승자 : " + String.join(", ", winners) + " 입니다.");
     }
 }
