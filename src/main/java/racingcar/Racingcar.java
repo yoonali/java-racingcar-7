@@ -21,6 +21,7 @@ public class Racingcar {
         List<Racingcar> cars = createCars();
         System.out.println(INPUT_NUMBER);
         int numberOfTries = Integer.parseInt(readLine());
+        numberException(numberOfTries);
         startRacing(cars, numberOfTries);
     }
 
@@ -82,5 +83,11 @@ public class Racingcar {
             }
         }
         System.out.println("최종 우승자 : " + String.join(", ", winners) + " 입니다.");
+    }
+
+    public static void numberException(int num) {
+        if (num <= 0) {
+            throw new IllegalArgumentException();
+        }
     }
 }
