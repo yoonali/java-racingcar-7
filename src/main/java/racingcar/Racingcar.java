@@ -8,6 +8,7 @@ import java.util.List;
 public class Racingcar {
     public static final String INPUT_TEXT = "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)";
     private final String carName;
+    private int position = 0;
 
     Racingcar(String carName) {
         this.carName = carName;
@@ -33,4 +34,13 @@ public class Racingcar {
         return cars;
     }
 
+    public void move(int randomNum) {
+        if (randomNum >= 4) {
+            position++;
+        }
+    }
+
+    public int getPosition() {
+        return position;
+    }
 }
