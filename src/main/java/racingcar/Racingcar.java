@@ -37,6 +37,7 @@ public class Racingcar {
                 throw new IllegalArgumentException("자동차 이름은 5글자 이하여야 합니다.");
             }
         }
+        isTwoCarValid(cars);
         return cars;
     }
 
@@ -88,6 +89,12 @@ public class Racingcar {
     public static void numberException(int num) {
         if (num <= 0) {
             throw new IllegalArgumentException();
+        }
+    }
+
+    public static void isTwoCarValid(List<Racingcar> cars) {
+        if (cars.size() < 2) {
+            throw new IllegalArgumentException("경주를 위해선 2대 이상의 자동차가 필요합니다.");
         }
     }
 }
