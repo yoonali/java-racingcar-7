@@ -2,6 +2,7 @@ package racingcar;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,10 +35,26 @@ public class Racingcar {
         return cars;
     }
 
+    public static void raceOneRound(List<Racingcar> cars) {
+        for (Racingcar car : cars) {
+            int randomNum = getRandomNum();
+            car.move(randomNum);
+            System.out.println(car.carName + " : " + car.getPositionString());
+        }
+    }
+
     public void move(int randomNum) {
         if (randomNum >= 4) {
             position++;
         }
+    }
+
+    public String getPositionString() {
+        return "-".repeat(position);
+    }
+
+    public static int getRandomNum() {
+        return Randoms.pickNumberInRange(0, 9);
     }
 
     public int getPosition() {
